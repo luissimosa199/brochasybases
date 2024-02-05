@@ -9,10 +9,9 @@ const ProductCard = () => {
         <Image
           src="/assets/brochas-0004.jpg"
           alt={`${"brocha"}_${"name"}`}
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
-          className="absolute z-10"
+          fill
+          sizes="(max-width: 768px) 100vw, 33vw"
+          className="absolute z-10 object-contain"
         />
         <button className="p-2 rounded-full bg-blue-600 text-white mx-5 -mb-4 hover:bg-blue-500 focus:outline-none focus:bg-blue-500 relative z-20">
           <AddToCartIcon />
