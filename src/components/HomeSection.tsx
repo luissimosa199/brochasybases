@@ -1,6 +1,8 @@
 import React from "react";
 import RightArrowIcon from "./icons/RightArrowIcon";
 import HomeProductList from "./HomeProductList";
+import { foundations } from "@/data/foundation";
+import { brushes } from "@/data/brushes";
 
 const HomeSection = () => {
   return (
@@ -65,12 +67,14 @@ const HomeSection = () => {
           </div>
         </div>
         <HomeProductList
-          title={"Nuevas Brochas"}
-          productTipe="brochas"
+          title={"Bases con mejores opiniones"}
+          productTipe="bases"
+          products={foundations}
         />
         <HomeProductList
-          title={"Nuevas Bases"}
-          productTipe="bases"
+          title={"Brochas con mejores reviews"}
+          productTipe="brochas"
+          products={brushes}
         />
       </div>
     </main>

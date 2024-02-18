@@ -1,9 +1,10 @@
 import React from "react";
 import LocationIcon from "./icons/LocationIcon";
-import ShoppingCartIcon from "./icons/ShoppingCartIcon";
 import MenuIcon from "./icons/MenuIcon";
 import SearchIcon from "./icons/SearchIcon";
 import Nav from "./Nav";
+import Logo from "./icons/Logo";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -18,9 +19,12 @@ const Header = () => {
             Brochas y Bases
           </div>
           <div className="flex items-center justify-end w-full">
-            <button className="text-gray-600 focus:outline-none mx-4 sm:mx-0">
-              <ShoppingCartIcon />
-            </button>
+            <Link
+              href="/admin"
+              className="text-gray-600 focus:outline-none mx-4 sm:mx-0"
+            >
+              <Logo />
+            </Link>
 
             <div className="flex sm:hidden">
               <button
