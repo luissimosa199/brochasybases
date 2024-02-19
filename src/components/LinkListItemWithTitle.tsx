@@ -8,6 +8,15 @@ const LinkListItemWithTitle = ({
   link: PostLink;
   setInputList: React.Dispatch<React.SetStateAction<PostLink[]>>;
 }) => {
+  const handleTitleChange = (url: string, newTitle: string) => {
+    setInputList((prevInputList) => {
+      const updatedLinks = prevInputList.map((link) =>
+        link.url === url ? { ...link, title: newTitle } : link
+      );
+      return updatedLinks;
+    });
+  };
+
   return (
     <div className="flex items-center bg-blue-500 text-white rounded-md p-2 text-sm font-sans">
       <div className="flex flex-col gap-2 w-full">
@@ -16,6 +25,8 @@ const LinkListItemWithTitle = ({
           type="text"
           placeholder="Título"
           className="text-sm p-1 rounded-sm text-black"
+          value={link.title}
+          onChange={(e) => handleTitleChange(link.url, e.target.value)}
         />
       </div>
       <button

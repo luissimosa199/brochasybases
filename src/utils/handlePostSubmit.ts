@@ -41,7 +41,8 @@ export const handlePostSubmit = async (
     text: finalHtml,
     tags: JSON.parse(formData.get("tags") as string),
     image: formData.get("image"),
-    author: session?.user?.email,
+    authorEmail: session?.user?.email,
+    authorName: session?.user?.name,
     visible: true,
     links: JSON.parse(formData.get("links") as string),
     metadata: {

@@ -3,7 +3,10 @@ import { v4 as uuidv4 } from "uuid";
 import mongoose from "mongoose";
 
 class Link {
+  @prop({ required: true })
   url: string;
+
+  @prop({ required: true })
   title: string;
 }
 
@@ -36,7 +39,10 @@ export class Post {
   image: string;
 
   @prop({ required: true })
-  author: string;
+  authorEmail: string;
+
+  @prop({ required: true })
+  authorName: string;
 
   @prop({ required: true })
   visible: boolean;

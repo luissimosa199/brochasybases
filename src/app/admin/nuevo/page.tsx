@@ -8,7 +8,7 @@ import { PostLink } from "@/types";
 import { handleNewFileChange, uploadImages } from "@/utils/formHelpers";
 import { handlePostSubmit } from "@/utils/handlePostSubmit";
 import { CldImage } from "next-cloudinary";
-import React, { ChangeEvent, useRef, useState } from "react";
+import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { useFormState, useFormStatus } from "react-dom";
 
 const SubmitButton = ({
@@ -66,20 +66,22 @@ const Page = () => {
     setImage(null);
     setPreviews([]);
     setTags([]);
+    setLinks([]);
   };
+
+  useEffect(() => {
+    if (state.success) {
+      formRef.current?.reset();
+      resetForm();
+    }
+  }, [state]);
 
   return (
     <main className="p-4">
       <h1 className="font-semibold text-xl mb-4">Nueva publicación</h1>
       <form
         ref={formRef}
-        action={(e) => {
-          formAction(e);
-          if (state.success && formRef.current) {
-            formRef.current?.reset();
-            resetForm();
-          }
-        }}
+        action={formAction}
       >
         <input
           type="hidden"
@@ -197,28 +199,20 @@ const Page = () => {
           hidden
         />
 
-        {previews.map((preview, index) => {
-          if (previews.includes("video")) {
+        <div className="mb-2">
+          {previews.map((preview, index) => {
             return (
-              <video
+              <CldImage
                 key={index}
                 src={preview}
+                alt="preview"
+                width={80}
+                height={80}
                 className="w-20 h-20 object-cover"
-                controls
               />
             );
-          }
-          return (
-            <CldImage
-              key={index}
-              src={preview}
-              alt="preview"
-              width={80}
-              height={80}
-              className="w-20 h-20 object-cover"
-            />
-          );
-        })}
+          })}
+        </div>
 
         <div>
           <TextEditor
